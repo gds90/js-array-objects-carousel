@@ -53,12 +53,10 @@ const showSlide = (index) => {
 
 prev.addEventListener('click',() => {
     slideIndex = (slideIndex - 1 + totalImages) % totalImages;
-    items.innerHTML = "";
     showSlide(slideIndex);
 });
 
 next.addEventListener('click', () => {
     slideIndex = (slideIndex + 1) % totalImages;
-    items.innerHTML = "";
     showSlide(slideIndex);
 });

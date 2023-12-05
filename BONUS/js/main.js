@@ -47,21 +47,27 @@ const showSlide = (index) => {
         </div>
     </div>`;
 
-    items.appendChild(prev);
-    items.appendChild(next);
+    
+    // BONUS 1
+    // items.appendChild(prev);
+    // items.appendChild(next);
+
+    // gestisco l'opacità delle thumbnails
+    document.getElementById(`tn-${index}`).style.opacity=1;
+    document.getElementById(`tn-${(index- 1 + totalImages) % totalImages}`).style.opacity=0.7;
+
 };
 
 prev.addEventListener('click',() => {
     slideIndex = (slideIndex - 1 + totalImages) % totalImages;
-    items.innerHTML = "";
     showSlide(slideIndex);
 });
 
 next.addEventListener('click', () => {
     slideIndex = (slideIndex + 1) % totalImages;
-    items.innerHTML = "";
     showSlide(slideIndex);
 });
+
 
 // BONUS 2
 // Realizziamo due pulsanti: uno per far sì che il carosello scorra da solo, l'altro per fermarlo. Lo scorrimento deve essere in questa fase andando dalla prima immagine all'ultima. Una volta sull'ultima deve ricominciare dalla prima.

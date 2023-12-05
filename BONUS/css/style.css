@@ -13,7 +13,6 @@
 }
 
 .items {
-    position: relative;
     width: 700px;
     height: 300px;
 }
@@ -101,4 +100,28 @@
 
 .padding-text{
     padding: 0px 50px 0px 30px
+}
+
+.thumbnail_container {
+    width: 100px;
+    height: 300px;
+    position: relative;
+    margin: 0 2px;
+}
+
+.thumbnail_content {
+    height: calc(100% / 5);
+}
+
+#tn-1, #tn-2, #tn-3, #tn-4 {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.7
+}
+
+#tn-0 {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
