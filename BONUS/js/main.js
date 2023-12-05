@@ -73,6 +73,7 @@ let stopButton = document.getElementById('stop_button');
 // dichiaro una variabile per impostare l'intervallo del carosello automatico
 let interval;
 
+// creo una funzione per impostare l'intervallo del carosello automatico
 function startSlide(){
     interval = setInterval(() => {
         slideIndex = (slideIndex + 1) % totalImages;
@@ -80,10 +81,13 @@ function startSlide(){
     }, 3000)
 };
 
+// assegno la funzione creata per impostare l'intervallo al bottone start
 startButton.addEventListener('click', startSlide);
 
+// creo una funzione per stoppare l'intervallo del carosello
 function stopSlide(){
     clearInterval(interval);
 };
 
+// assegno la funzione creata per stoppare l'intervallo al bottone stop
 stopButton.addEventListener('click', stopSlide);
