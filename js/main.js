@@ -24,55 +24,42 @@ const images = [
 // dichiaro una variabile indice per il carosello
 let slideIndex = 0;
 
-// Milestone 1:
-// Cliccando sui pulsanti va avanti o indietro. All'ultima immagine ed alla prima non va più avanti
+// dichiaro una variabile che mi conterrà la lunghezza totale dell'array images
+const totalImages = images.length;
 
-// // FUNZIONI TASTI
-// function showItem(index) {
-//     const items = document.querySelectorAll('.item');
-//     items.forEach(item => item.classList.remove('active'));
-//     items[index].classList.add('active');
-// }
+// recupero tutti gli elementi del DOM che mi serviranno per il funzionamento del carosello
+const items = document.querySelector('.items');
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
 
-// function nextSlide() {
-//     slideIndex++;
-//     showItem(slideIndex);
-// };
+const showSlide = (index) => {
+    // recupero le info dall'array 
+    const image = images[index].image;
+    const title = images[index].title;
+    const text = images[index].text;
 
-// function prevSlide() {
-//     slideIndex--;
-//     showItem(slideIndex);
-// };
-
-
-// // recupero i pulsanti avanti e indietro dall'HTML e gli aggiungo la relativa funzione al click
-// const prev = document.querySelector(".prev").addEventListener('click', prevSlide());
-// const next = document.querySelector(".next").addEventListener('click', nextSlide());
-
-// recupero il container principale dall'HTML
-const itemsContainer = document.querySelector('.items');
-
-
-
-
-// ciclo l'array images per crearmi i div contenenti le info
-images.forEach((elem) => { 
-    let item = document.createElement('div');
-
-    item.classList.add('item')
-
-    let image = document.createElement('img');
-    image.src = `./${elem.image}`;
-    let title = document.createElement('h2');
-    title.innerText = elem.title;
-    let text = document.createElement('h5');
-    text.innerText = elem.text;
-
-    item.appendChild(image);
-    item.appendChild(title);
-    item.appendChild(text);
+    items.textContent = "";
     
-    itemsContainer.appendChild(item);
+    items.innerHTML = 
+    `<div class="item active">
+        <img src="./${image}" alt="">
+        <div class="position-absolute bottom-50 text-right color-white padding-text">
+            <h2 id="slide-title">${title}</h2>
+            <h5 id="slide-text">${text}</h5>
+        </div>
+    </div>
+    
+    <div class="prev"></div>
+    <div class="next"></div>`;
+};
+
+prev.addEventListener('click',() => {
+    slideIndex = (slideIndex - 1 + totalImages) % totalImages;
+    showSlide(slideIndex);
+    
 });
 
-
+next.addEventListener('click', () => {
+    slideIndex = (slideIndex + 1) % totalImages;
+    showSlide(slideIndex);
+});
