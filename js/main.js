@@ -37,29 +37,28 @@ const showSlide = (index) => {
     const image = images[index].image;
     const title = images[index].title;
     const text = images[index].text;
-
-    items.textContent = "";
     
     items.innerHTML = 
     `<div class="item active">
-        <img src="./${image}" alt="">
+        <img src="./${image}" alt="${title}">
         <div class="position-absolute bottom-50 text-right color-white padding-text">
             <h2 id="slide-title">${title}</h2>
             <h5 id="slide-text">${text}</h5>
         </div>
-    </div>
-    
-    <div class="prev"></div>
-    <div class="next"></div>`;
+    </div>`;
+
+    items.appendChild(prev);
+    items.appendChild(next);
 };
 
 prev.addEventListener('click',() => {
     slideIndex = (slideIndex - 1 + totalImages) % totalImages;
+    items.innerHTML = "";
     showSlide(slideIndex);
-    
 });
 
 next.addEventListener('click', () => {
     slideIndex = (slideIndex + 1) % totalImages;
+    items.innerHTML = "";
     showSlide(slideIndex);
 });
