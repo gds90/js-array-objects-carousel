@@ -46,7 +46,6 @@ const showSlide = (index) => {
             <h5 id="slide-text">${text}</h5>
         </div>
     </div>`;
-
     
     // BONUS 1
     // items.appendChild(prev);

@@ -38,6 +38,7 @@ const showSlide = (index) => {
     const title = images[index].title;
     const text = images[index].text;
     
+    // inietto l'html con le info dell'array nel div items
     items.innerHTML = 
     `<div class="item active">
         <img src="./${image}" alt="${title}">
@@ -47,16 +48,23 @@ const showSlide = (index) => {
         </div>
     </div>`;
 
+    // appendo di nuovo i tasti per cambiare immagine
     items.appendChild(prev);
     items.appendChild(next);
 };
 
 prev.addEventListener('click',() => {
+    // decremento dell'indice del carosello
     slideIndex = (slideIndex - 1 + totalImages) % totalImages;
+
+    // richiamo la funzione showSlide
     showSlide(slideIndex);
 });
 
 next.addEventListener('click', () => {
+    // incremento dell'indice del carosello
     slideIndex = (slideIndex + 1) % totalImages;
+
+    // richiamo la funzione showSlide
     showSlide(slideIndex);
 });
